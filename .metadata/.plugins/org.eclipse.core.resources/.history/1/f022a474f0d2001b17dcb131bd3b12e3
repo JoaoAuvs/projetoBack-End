@@ -1,0 +1,20 @@
+package com.appsala.app.repository;
+
+import java.util.List;
+import java.util.Optional;
+import com.appsala.app.entities.Regional;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+@Repository
+public interface RegionalRepository extends JpaRepository<Regional, Integer> {
+	
+	Optional<Regional> findyById(Integer id);
+	
+	boolean existsById(Integer id);
+	
+	List<Regional> findAll();
+	
+	<S extends Regional> S save(S entity);
+	
+	void deleteById(Integer id);
+}

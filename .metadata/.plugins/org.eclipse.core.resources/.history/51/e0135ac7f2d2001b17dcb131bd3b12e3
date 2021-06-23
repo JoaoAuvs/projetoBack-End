@@ -1,0 +1,18 @@
+package com.appsala.app.entities;
+
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+public class Bloco extends EntityBase implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
+	@Column(name = "nome")
+	private String nome;
+	
+	@ManyToOne()
+	@JoinColumn(name = "unidade_id")
+	private Unidade unidade;
+}

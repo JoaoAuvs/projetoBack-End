@@ -1,0 +1,47 @@
+package com.appsala.app.entities;
+
+import lombok.Data;
+import java.io.Serializable;
+import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
+@Table(name = "embarcados")
+@Data
+
+public class Embarcado extends EntityBase implements Serializable{
+	private static final long serialVersionUID = 1L;
+	@Column(name = "descricao_embarcado")
+	private String descricao_embarcado;
+	
+	@Column(name = "firmware")
+	private String firmware;
+	
+	@Column(name = "ip_embarcado")
+	private String ip_embarcado;
+	
+	@Column(name = "ip_gateway")
+	private String ip_gateway;
+	
+	@Column(name = "mac")
+	private String mac;
+	
+	@Column(name = "masc")
+	private String masc;
+	
+	@Column(name = "password_wifi")
+	private String password_wifi;
+	
+	@Column(name = "ssid")
+	private String ssid;	
+	
+	@Column(name = "status")
+	private String status;
+	
+	@Column(name = "tipo_rede")
+	private String tipo_rede;
+	
+	@Column(name = "ambiente_id")
+	private String ambiente_id;	
+}

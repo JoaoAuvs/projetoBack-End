@@ -1,0 +1,21 @@
+package com.appsala.app.repository;
+
+import java.util.List;
+import java.util.Optional;
+import com.appsala.app.entities.Usuario;
+import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+@Repository
+public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+	
+	Optional<Usuario> findyById(Integer id);
+	
+	boolean existsById(Integer id);
+	
+	List<Usuario> findAll();
+	
+	<S extends Usuario> S create(S entity);
+	
+	void deleteById(Integer id);
+}

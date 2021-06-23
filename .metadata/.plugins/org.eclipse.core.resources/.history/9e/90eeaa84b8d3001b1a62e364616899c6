@@ -1,0 +1,61 @@
+package com.appsala.app.entities;
+
+import lombok.Data;
+import java.util.List;
+import java.util.ArrayList;
+import java.io.Serializable;
+import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import com.appsala.app.enuns.Status;
+
+@Entity
+@Table(name = "usuarios")
+@Data
+public class Usuario extends EntityBase implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	@Column(name = "nome")
+	private String nome;
+
+	@Column(name = "email")
+	private String email;
+
+	@Column(name = "celular")
+	private String celular;
+
+//	@Enumerated(EnumType.STRING)
+//	private Status status;
+
+	@Column(name = "password")
+	private String password;
+
+	@Column(name = "token")
+	private String token;
+
+	@Column(name = "codigo_rfid")
+	private String codeRFID;
+
+	@Column(name = "operador")
+	private String operador;
+
+//________________________________
+
+// RELACIONAMENTOS
+
+//	@OneToMany
+//	@JoinColumn(name = "usuario_id")
+//	private List<Acesso> acessos = new ArrayList<Acesso>();
+
+//	@ManyToMany
+//	@JoinTable(name = "perfis_usuarios")
+//	private List<Perfil> perfis = new ArrayList<Perfil>();
+
+}

@@ -1,0 +1,27 @@
+package com.appsala.app.entities;
+
+import lombok.Data;
+import java.util.Date;
+import java.io.Serializable;
+import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name = "acessos")
+@Data
+
+public class Acesso extends EntityBase implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_entrada")
+	private Date dataEntrada;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_saida")
+	private Date dataSaida;
+}

@@ -1,0 +1,20 @@
+package com.appsala.app;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication(
+		scanBasePackages = {
+				"com.appsla.app.controllers",
+				"com.appsla.app.entities",
+				"com.appsla.app.enuns",
+				"com.appsla.app.repository",
+				"com.appsla.app.services"
+		}
+		)
+public class AppApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(AppApplication.class, args);
+	}
+}

@@ -1,0 +1,60 @@
+package com.appsala.app.entities;
+
+import lombok.Data;
+import java.util.List;
+import java.io.Serializable;
+
+import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.appsala.app.enuns.TipoAmbiente;
+
+@Entity
+@Table(name="ambientes")
+@Data
+
+public class Ambiente extends EntityBase implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+	@Column(name = "nome_ambiente")
+	private String nome;
+
+	@Column(name = "descricao")
+	private String descricao;
+
+	@Column(name = "capacidade")
+	private Integer capacidade;
+
+	@Column(name = "ip_camera")
+	private String ipCamera;
+
+	/* ENUNS */
+	
+	@Enumerated(EnumType.STRING)
+	private TipoAmbiente tipoAmbiente;
+
+	/* RELACIONAMENTOS */
+
+	@ManyToOne()
+	@JoinColumn(name = "bloco_id")
+	private Bloco bloco;
+
+	@OneToMany
+	@JoinColumn(name = "ambiente_id")
+	private List<Acesso> acessos;
+
+	@OneToMany
+	@JoinColumn(name = "ambiente_id")
+	private List<Embarcado> embarcados;
+
+	@ManyToMany
+	@JoinTable(name = "perfis_ambientes")
+	private List<Perfil> perfis;
+}

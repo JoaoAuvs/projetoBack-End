@@ -1,0 +1,50 @@
+package com.appsala.app.controllers;
+import java.util.List;
+import com.appsala.app.entities.Usuario;
+import org.springframework.http.HttpStatus;
+import com.appsala.app.services.UsuarioService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(value = "/usuario")
+public class UsuarioController {
+	
+	@Autowired
+	private UsuarioService usuarioService;
+	
+	@RequestMapping(value = { "/{id}" }, method = { RequestMethod.GET })
+    public ResponseEntity<?> findById(@PathVariable final Integer id) {
+        final Usuario usuario = this.usuarioService.findById(id);
+        return (ResponseEntity<?>)new ResponseEntity((Object)usuario, HttpStatus.OK);
+    }
+    
+    @RequestMapping(method = { RequestMethod.GET })
+    public ResponseEntity<List<Usuario>> findAll() {
+        final List<Usuario> usuarioList = (List<Usuario>)this.usuarioService.findAll();
+        return (ResponseEntity<List<Usuario>>)new ResponseEntity((Object)usuarioList, HttpStatus.OK);
+    }
+    
+    @RequestMapping(method = { RequestMethod.POST })
+    public ResponseEntity<Void> create(@RequestBody Usuario usuario) {
+        usuario = this.usuarioService.create(usuario);
+        return (ResponseEntity<Void>)ResponseEntity.noContent().build();
+    }
+    
+    @RequestMapping(value = { "/{id}" }, method = { RequestMethod.PUT })
+    public ResponseEntity<Void> update(@PathVariable final Integer id, @RequestBody Usuario usuario) {
+        usuario = this.usuarioService.update(usuario);
+        return (ResponseEntity<Void>)ResponseEntity.noContent().build();
+    }
+    
+    @RequestMapping(value = { "/{id}" }, method = { RequestMethod.DELETE })
+    public ResponseEntity<Void> deleteById(@PathVariable final Integer id) {
+        this.usuarioService.deleteById(id);
+        return (ResponseEntity<Void>)ResponseEntity.noContent().build();
+    }
+}
